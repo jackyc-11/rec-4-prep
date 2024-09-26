@@ -74,8 +74,7 @@ class Routes {
     const user = Sessioning.getUser(session);
     const oid = new ObjectId(id);
     await Posting.assertAuthorIsUser(oid, user);
-    await Posting.delete(oid);
-    return { msg: "Post deleted successfully." };
+    return Posting.delete(oid);
   }
 }
 
